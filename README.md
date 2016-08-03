@@ -6,12 +6,11 @@ Blog created using Node, Express, and PostgreSQL
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisities
+## Prerequisities
 
-Python
-```
+### Install the prerequisities in the following order:
+
 Python Version 2.7.10
-```
 
 Pip Version 7.1.2
 ```
