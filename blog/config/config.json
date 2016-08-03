@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "node",
+    "password": "ctp2016",
+    "database": "blog",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

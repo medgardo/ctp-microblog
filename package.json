@@ -1,0 +1,24 @@
+{
+  "name": "ctp-blog",
+  "version": "0.0.1",
+  "description": "A simple blog.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -L app.js"
+  },
+  "author": "Donato & Edgardo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "pg": "^6.0.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.23.6",
+    "sequelize-cli": "^2.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^5.2.2"
+  }
+}
