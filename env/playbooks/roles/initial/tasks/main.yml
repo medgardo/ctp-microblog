@@ -1,0 +1,16 @@
+- name: grab vagrant user's keys
+  command: cat /home/{{ ansible_ssh_user }}/.ssh/authorized_keys
+  register: authorized_keys
+
+- name: create {{ app_user }} user
+  user: name={{ app_user }} groups=admin,sudo,root
+        shell=/bin/bash
+        password={{ ssh_password }}
+        state=present
+
+- name: give default user's keys to app user
+  authorized_key: user={{ app_user }} key='{{ item }}'
+  with_items: authorized_keys.stdout_lines
+
+- name: copy over sudoers file
+  copy: src=etc/sudoers dest=/etc/sudoers

@@ -1,0 +1,44 @@
+- name: add postgres apt key
+  apt_key: id=ACCC4CF8
+           url=https://www.postgresql.org/media/keys/ACCC4CF8.asc
+           state=present
+
+- name: add postgres apt repo
+  apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main'
+                  state=present
+
+- name: apt install postgres
+  apt: pkg={{ item }}
+       state=latest
+       update_cache=yes
+       cache_valid_time=3600
+  with_items:
+    - postgresql-9.4
+    - postgresql-server-dev-9.4
+    - python-psycopg2
+
+- name: copy over postgres hba conf
+  copy: src=etc/postgresql/9.4/main/pg_hba.conf
+        dest=/etc/postgresql/9.4/main/pg_hba.conf
+  notify:
+    - restart postgres
+
+- name: copy over postgres conf
+  copy: src=etc/postgresql/9.4/main/postgresql.conf
+        dest=/etc/postgresql/9.4/main/postgresql.conf
+  notify:
+    - restart postgres
+
+- name: create postgresql database
+  postgresql_db: name={{ app_name }}
+  sudo: yes
+  sudo_user: postgres
+
+- name: create postgresql user
+  postgresql_user: db={{ app_name }}
+                   name={{ postgresql_user }}
+                   password={{ postgresql_password }}
+                   priv=ALL
+                   role_attr_flags=CREATEDB
+  sudo: yes
+  sudo_user: postgres

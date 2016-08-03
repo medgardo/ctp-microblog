@@ -1,0 +1,11 @@
+- name: add mongo apt key
+  apt_key: id=7F0CEB10 state=present
+           url=http://docs.mongodb.org/10gen-gpg-key.asc
+
+- name: add mongo apt repo
+  apt_repository: repo='deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' state=present
+
+- name: apt install mongo
+  apt: pkg=mongodb-org state=latest update_cache=yes cache_valid_time=3600
+  notify:
+    - restart mongo

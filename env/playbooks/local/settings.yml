@@ -1,0 +1,2 @@
+postgresql_user: node
+postgres_private_ip: 192.168.33.10

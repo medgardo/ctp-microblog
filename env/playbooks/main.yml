@@ -1,0 +1,24 @@
+- hosts: all
+  user: "{{ host_user|default('ubuntu') }}"
+  sudo: True
+  vars_files:
+    - "{{ env }}/passwords.yml"
+  roles:
+    - initial
+
+- hosts: postgres
+  user: "{{ app_user }}"
+  sudo: True
+  vars_files:
+    - "{{ env }}/passwords.yml"
+    - "{{ env }}/settings.yml"
+  roles:
+    - postgres
+
+- hosts: app
+  user: "{{ app_user }}"
+  sudo: True
+  vars_files:
+    - "{{ env }}/passwords.yml"
+  roles:
+    - blog

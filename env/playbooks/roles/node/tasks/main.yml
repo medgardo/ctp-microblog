@@ -1,0 +1,17 @@
+- name: install base packages
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+     - build-essential
+     - curl
+     - git
+     - libssl-dev
+     - vim
+
+- name: download npm script
+  get_url: url=https://deb.nodesource.com/setup_6.x mode=0777 dest=/
+
+- name: executing npm install script
+  command: bash -c 'source /setup_6.x'
+
+- name: install node
+  apt: name=nodejs state=present update_cache=yes
