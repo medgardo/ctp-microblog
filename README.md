@@ -8,8 +8,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Prerequisities
 
-### Install the prerequisities in the following order:
-
 Python Version 2.7.10
 
 Pip Version 7.1.2
@@ -23,11 +21,10 @@ sudo pip install ansible==1.9.4
 ```
 
 VirtualBox Version 5.0.10
+
 Vagrant Version 1.7.4
 
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
+### Running the Blog
 
 Change into the env directory
 ```
