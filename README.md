@@ -65,9 +65,9 @@ Coming Soon
 
 ## Built With
 
-* Node - Bla bla bla
-* Express - Maybe
-* Postgres - ergaerga
+* Node
+* Express
+* Postgres
 
 ## License
 
