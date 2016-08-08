@@ -24,6 +24,13 @@ module.exports = (sequelize) => {
         isEmail: true,
       },
     },
+    password: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
   });
 
   return User;

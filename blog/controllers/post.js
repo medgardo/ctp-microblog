@@ -4,7 +4,6 @@ const models = require('../models');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Post homepage...');
 });
 
 router.post('/', (req, res) => {
@@ -16,8 +15,6 @@ router.post('/', (req, res) => {
     // Entry is not unique.
     console.log(err);
   });
-  console.log(req.body);
-  res.send('Copy');
 });
 
 module.exports = router;
