@@ -13,6 +13,7 @@ router.post('/', (req, res) => {
     email: req.body.email,
     password: req.body.password,
   });
+  res.send('Cool..')
 });
 
 module.exports = router;

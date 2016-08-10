@@ -11,7 +11,10 @@
     - eslint-plugin-jsx-a11y
     - eslint
     - sequelize-cli
+    - bcrypt
+    - node-gyp
 
+# FIX: bcrypt & bcrypt should not be global. 
 - name: install global packages
   npm: name={{item}} state=present global=yes
   with_items:
@@ -22,3 +25,5 @@
     - eslint-plugin-jsx-a11y
     - eslint-config-airbnb
     - sequelize-cli
+    - bcrypt
+    - node-gyp

@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -11,7 +12,7 @@ passport.use(new LocalStrategy({
       where: { email: email }
     }).then(function(user) {
       if(user) {
-        if(user.password !== password) {
+        if (passwordsMatch(password, user.password) === false) {
           return done(null, false, { message: 'Incorrect password.' });
         }
       } else if (user == null) {
@@ -36,5 +37,13 @@ passport.deserializeUser(function(userID, done) {
     return done(null, user);
   });
 });
+
+passport.loggedIn = function(req, res, next) {
+  req.user ? next() : res.redirect('/login');
+};
+
+function passwordsMatch(passwordSubmitted, storedPassword) {
+  return bcrypt.compareSync(passwordSubmitted, storedPassword);
+}
 
 module.exports = passport;
