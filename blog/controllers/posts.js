@@ -2,7 +2,7 @@ const express = require('express');
 const models = require('../models');
 
 module.exports = {
-  registerRouter: function() {
+  registerRouter() {
     const router = express.Router();
 
     router.get('/', this.index);
@@ -15,25 +15,25 @@ module.exports = {
 
     return router;
   },
-  index: function(req, res) {
+  index(req, res) {
     res.send('All Post...');
   },
-  new: function(req, res) {
-    res.send('Rendered form to create post.')
+  new(req, res) {
+    res.send('Rendered form to create post.');
   },
-  create: function(req, res) {
+  create(req, res) {
     res.send('Creating post...');
   },
-  show: function(req, res) {
+  show(req, res) {
     res.send('Showing specific post...');
   },
-  edit: function(req, res) {
+  edit(req, res) {
     res.send('Rendered form to edit existing post.');
   },
-  update: function(req, res) {
+  update(req, res) {
     res.send('Updating existing post...');
   },
-  delete: function(req, res) {
+  delete(req, res) {
     res.send('Delete existing post...');
-  }
-}
+  },
+};

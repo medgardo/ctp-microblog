@@ -14,7 +14,7 @@ fs
   });
 
 router.get('/', (req, res) => {
-  res.send('Home..')
+  res.send('Home..');
 });
 
 module.exports = router;
