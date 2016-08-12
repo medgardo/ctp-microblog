@@ -4,7 +4,6 @@ const models = require('../models');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('User homepage...');
 });
 
 router.post('/', (req, res) => {
@@ -12,8 +11,9 @@ router.post('/', (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
+    password: req.body.password,
   });
-  res.send('Copy');
+  res.send('Cool..')
 });
 
 module.exports = router;
