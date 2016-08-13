@@ -4,14 +4,18 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../models').User;
 
+function passwordsMatch(passwordSubmitted, storedPassword) {
+  return bcrypt.compareSync(passwordSubmitted, storedPassword);
+}
+
 passport.use(new LocalStrategy({
-    usernameField: 'email',
-  },
-  function(email, password, done) {
+  usernameField: 'email',
+},
+  (email, password, done) => {
     User.findOne({
-      where: { email: email }
-    }).then(function(user) {
-      if(user) {
+      where: { email },
+    }).then((user) => {
+      if (user) {
         if (passwordsMatch(password, user.password) === false) {
           return done(null, false, { message: 'Incorrect password.' });
         }
@@ -24,12 +28,12 @@ passport.use(new LocalStrategy({
   })
 );
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user.username);
 });
 
-passport.deserializeUser(function(username, done) {
-  User.findById(username).then(function(user) {
+passport.deserializeUser((username, done) => {
+  User.findById(username).then((user) => {
     if (user == null) {
       return done(null, false);
     }
@@ -38,12 +42,14 @@ passport.deserializeUser(function(username, done) {
   });
 });
 
-passport.loggedIn = function(req, res, next) {
-  req.user ? next() : res.redirect('/login');
+passport.loggedIn = (req, res, next) => {
+  return req.user ? res.redirect('/profile') : next();
 };
 
-function passwordsMatch(passwordSubmitted, storedPassword) {
-  return bcrypt.compareSync(passwordSubmitted, storedPassword);
-}
+passport.redirectIfNotLoggedIn = (route) => {
+  return (req, res, next) => {
+    req.user ? next() : res.redirect(route);
+  };
+};
 
 module.exports = passport;

@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
       validate: {
         notEmpty: true,
       },
-    }
+    },
   });
 
   return Post;
