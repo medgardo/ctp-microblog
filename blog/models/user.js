@@ -30,6 +30,7 @@ module.exports = (sequelize) => {
     email: {
       type: Sequelize.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         notEmpty: true,
         isEmail: true,
@@ -44,15 +45,15 @@ module.exports = (sequelize) => {
     },
   });
 
-  User.beforeCreate((user) => {
-    return new sequelize.Promise((resolve) => {
+  User.beforeCreate((user) =>
+    new sequelize.Promise((resolve) => {
       bcrypt.hash(user.password, saltRounds, (err, hashedPassword) => {
         resolve(hashedPassword);
       });
     }).then((hashedPw) => {
       user.password = hashedPw;
-    });
-  });
+    })
+  );
 
   return User;
 };

@@ -42,14 +42,10 @@ passport.deserializeUser((username, done) => {
   });
 });
 
-passport.loggedIn = (req, res, next) => {
-  return req.user ? res.redirect('/profile') : next();
-};
+passport.redirectIfLoggedIn = (route) =>
+  (req, res, next) => (req.user ? res.redirect(route) : next());
 
-passport.redirectIfNotLoggedIn = (route) => {
-  return (req, res, next) => {
-    req.user ? next() : res.redirect(route);
-  };
-};
+passport.redirectIfNotLoggedIn = (route) =>
+  (req, res, next) => (req.user ? next() : res.redirect(route));
 
 module.exports = passport;
