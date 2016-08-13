@@ -16,7 +16,7 @@ passport.use(new LocalStrategy({
           return done(null, false, { message: 'Incorrect password.' });
         }
       } else if (user == null) {
-        return done(null, false, { message: 'Incorrect username.' });
+        return done(null, false, { message: 'Incorrect email.' });
       }
 
       return done(null, user);
@@ -25,11 +25,11 @@ passport.use(new LocalStrategy({
 );
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user.username);
 });
 
-passport.deserializeUser(function(userID, done) {
-  User.findById(userID).then(function(user) {
+passport.deserializeUser(function(username, done) {
+  User.findById(username).then(function(user) {
     if (user == null) {
       return done(null, false);
     }
