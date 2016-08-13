@@ -1,6 +1,6 @@
 const express = require('express');
-const exphbs  = require('express-handlebars');
-const cookieParser = require('cookie-parser')
+const exphbs = require('express-handlebars');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressSession = require('express-session');
 const models = require('./blog/models/index');
@@ -15,12 +15,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.engine('handlebars', exphbs({
-  layoutsDir: "blog/views/layouts",
-  defaultLayout: 'main'
-  })
-);
+  layoutsDir: 'blog/views/layouts',
+  defaultLayout: 'main',
+}));
 app.set('view engine', 'handlebars');
-app.set('views', __dirname + '/blog/views/');
+app.set('views', `${__dirname}/blog/views/`);
 
 app.use(require('./blog/controllers/'));
 

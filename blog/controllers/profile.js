@@ -1,11 +1,15 @@
 const express = require('express');
-const models = require('../models');
 const auth = require('../middlewares/auth');
 
-const router = express.Router();
+module.exports = {
+  registerRouter() {
+    const router = express.Router();
 
-router.get('/', auth.loggedIn, (req, res) => {
-  res.render('profile');
-});
+    router.get('/', auth.redirectIfNotLoggedIn('/login'), this.index);
 
-module.exports = router;
+    return router;
+  },
+  index(req, res) {
+    res.render('profile');
+  },
+};

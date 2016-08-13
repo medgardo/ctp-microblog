@@ -1,19 +1,31 @@
 const express = require('express');
 const models = require('../models');
 
-const router = express.Router();
+module.exports = {
+  registerRouter() {
+    const router = express.Router();
 
-router.get('/', (req, res) => {
-});
+    router.get('/', this.index);
+    router.post('/', this.submit);
 
-router.post('/', (req, res) => {
-  models.User.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password,
-  });
-  res.send('Cool..')
-});
-
-module.exports = router;
+    return router;
+  },
+  index(req, res) {
+    res.render('sign-up');
+  },
+  submit(req, res) {
+    models.User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    }).then((user) => {
+      req.login(user, () =>
+        res.redirect('/profile')
+      );
+    }).catch(() => {
+      res.render('sign-up');
+    });
+  },
+};

@@ -10,11 +10,11 @@ fs
   .filter(file => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach(file => {
     const fileName = file.substr(0, file.length - 3);
-    router.use(`/${fileName}`, require(`./${fileName}`));
+    router.use(`/${fileName}`, require(`./${fileName}`).registerRouter());
   });
 
 router.get('/', (req, res) => {
-  res.send('Home..')
+  res.send('Home..');
 });
 
 module.exports = router;

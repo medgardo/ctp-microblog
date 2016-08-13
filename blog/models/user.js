@@ -18,9 +18,19 @@ module.exports = (sequelize) => {
         notEmpty: true,
       },
     },
+    username: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      primaryKey: true,
+      validate: {
+        notEmpty: true,
+        isAlphanumeric: true,
+      },
+    },
     email: {
       type: Sequelize.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         notEmpty: true,
         isEmail: true,
@@ -35,15 +45,15 @@ module.exports = (sequelize) => {
     },
   });
 
-  User.beforeCreate(function(user, options) {
-    return new sequelize.Promise(function(resolve, reject) {
-      bcrypt.hash(user.password, saltRounds, function(err, hashedPassword) {
+  User.beforeCreate((user) =>
+    new sequelize.Promise((resolve) => {
+      bcrypt.hash(user.password, saltRounds, (err, hashedPassword) => {
         resolve(hashedPassword);
       });
-    }).then(function (hashedPw) {
+    }).then((hashedPw) => {
       user.password = hashedPw;
-    });
-  });
+    })
+  );
 
   return User;
 };
