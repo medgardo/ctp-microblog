@@ -11,9 +11,26 @@ module.exports = {
     return router;
   },
   index(req, res) {
-    res.send('All Users...');
+    models.User.findAll().then((user) => {
+      res.render('users', {
+        user,
+      });
+    });
   },
   show(req, res) {
-    res.send('Specific User info...');
+    models.User.findOne({
+      where: { username: req.params.username },
+    }).then((user) => {
+      models.Post.findAll({
+        where: { email: user.email },
+      }).then((posts) => {
+        res.render('users/single', {
+          user,
+          posts,
+        });
+      });
+    }).catch(() => {
+      res.render('users/single');
+    });
   },
 };

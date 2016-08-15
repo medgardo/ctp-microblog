@@ -1,5 +1,5 @@
-const express = require('express');
 const auth = require('../middlewares/auth');
+const express = require('express');
 
 module.exports = {
   registerRouter() {
@@ -10,6 +10,8 @@ module.exports = {
     return router;
   },
   index(req, res) {
-    res.render('profile');
+    res.render('profile', {
+      user: req.user,
+    });
   },
 };

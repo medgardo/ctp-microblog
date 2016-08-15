@@ -1,3 +1,7 @@
+{{#if user}}
+  <h1>{{user.firstName}} {{user.lastName}}</h1>
+{{/if}}
+
 <form name="logout" action="/logout" method="post">
   <input type="submit" value="Logout"></li>
 </form>
