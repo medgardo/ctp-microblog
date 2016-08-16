@@ -1,0 +1,13 @@
+{{#if post}}
+  <form method="POST" action="/posts/{{post.username}}/{{post.title}}?_method=PUT">
+    <input type="text" name="title" value={{post.title}} required>
+    <input type="text" name="body" value={{post.body}} required>
+    <input type="submit" value="Update"></li>
+  </form>
+
+  <form method="POST" action="/posts/{{post.username}}/{{post.title}}?_method=DELETE">
+    <input type="hidden" name="title" value={{post.title}} required>
+    <input type="hidden" name="body" value={{post.body}} required>
+    <input type="submit" value="Delete"></li>
+  </form>
+{{/if}}

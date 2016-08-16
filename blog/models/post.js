@@ -2,12 +2,21 @@ const Sequelize = require('sequelize');
 
 module.exports = (sequelize) => {
   const Post = sequelize.define('post', {
-    user: {
-      type: Sequelize.INTEGER,
+    email: {
+      type: Sequelize.STRING,
       unique: 'compositeIndex',
       allowNull: false,
       validate: {
         notEmpty: true,
+        isEmail: true,
+      },
+    },
+    username: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        isAlphanumeric: true,
       },
     },
     title: {

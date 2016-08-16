@@ -5,8 +5,10 @@ const bodyParser = require('body-parser');
 const expressSession = require('express-session');
 const models = require('./blog/models/index');
 const passport = require('./blog/middlewares/auth');
+const methodOverride = require('method-override');
 
 const app = express();
+app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
