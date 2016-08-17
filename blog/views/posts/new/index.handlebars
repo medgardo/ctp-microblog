@@ -1,6 +1,41 @@
-<form name="login" action="/posts" method="put">
-  <input type="text" name="title" placeholder="Title" required>
-  <input type="text" name="body" placeholder="Body" required>
-  <input type="submit" value="Sign Up"></li>
-</form>
-  
+<header class="intro-header" style="background-image: url('/img/contact-bg.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>Create A New Post</h1>
+          <hr class="small">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <form name="create-post" action="/posts" method="post">
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Title</label>
+            <input type="text" class="form-control" placeholder="Title" name="title" required data-validation-required-message="Please enter a title.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Body</label>
+            <input type="text" class="form-control" placeholder="Body" name="body" required data-validation-required-message="Please enter a body.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-default">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

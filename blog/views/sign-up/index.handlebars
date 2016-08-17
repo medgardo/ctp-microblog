@@ -1,8 +1,63 @@
-<form name="login" action="/sign-up" method="post">
-  <input type="email" name="email" placeholder="Random@email.com" required>
-  <input type="text" name="firstName" placeholder="John" required>
-  <input type="text" name="lastName" placeholder="Doe" required>
-  <input type="text" name="username" placeholder="Username" required>
-  <input type="password" name="password" placeholder="Password" required>
-  <input type="submit" value="Sign Up"></li>
-</form>
+<header class="intro-header" style="background-image: url('/img/contact-bg.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>Sign Up</h1>
+          <hr class="small">
+          <span class="subheading">Join our blog!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <form name="sign-up" action="/sign-up" method="post">
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>First Name</label>
+            <input type="text" class="form-control" placeholder="First Name" name="firstName" required data-validation-required-message="Please enter your first name.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Last Name</label>
+            <input type="text" class="form-control" placeholder="Last Name" name="lastName" required data-validation-required-message="Please enter your first name.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="Username" name="username" required data-validation-required-message="Please enter your username.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Email Address</label>
+            <input type="email" class="form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="Password" name="password" required data-validation-required-message="Please enter your password.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-default">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

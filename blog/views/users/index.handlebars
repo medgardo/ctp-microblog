@@ -1,7 +1,35 @@
-<h1>All Users...</h1>
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1>Users</h1>
+          <hr class="small">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<ul>
-  {{#each user}}
-    <li><a href="/users/{{this.username}}">{{this.username}}</a></li>
-  {{/each}}
-<ul>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      {{#each user}}
+        <div class="post-preview">
+          <a href="/users/{{this.username}}">
+            <h2 class="post-title">
+              {{this.username}}
+            </h2>
+          </a>
+          <p class="post-meta">{{this.firstName}} {{this.lastName}}</p>
+        </div>
+        <hr>
+      {{/each}}
+      <ul class="pager">
+        <li class="next">
+            <a href="#">Older Posts &rarr;</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

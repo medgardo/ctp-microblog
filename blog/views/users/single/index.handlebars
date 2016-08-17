@@ -1,3 +1,37 @@
-{{#if user}}
-  <h1>{{user.firstName}} {{user.lastName}}</h1>
-{{/if}}
+<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>{{user.username}}</h1>
+          <hr class="small">
+          <span class="subheading">{{user.firstName}} {{user.lastName}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      {{#each post}}
+        <div class="post-preview">
+          <a href="/posts/{{this.username}}/{{this.title}}">
+            <h2 class="post-title">
+              {{this.title}}
+            </h2>
+          </a>
+        </div>
+        <hr>
+      {{/each}}
+      {{#if post}}
+        <ul class="pager">
+          <li class="next">
+              <a href="#">Older Posts &rarr;</a>
+          </li>
+        </ul>
+      {{/if}}
+    </div>
+  </div>
+</div>

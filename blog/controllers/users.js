@@ -23,10 +23,10 @@ module.exports = {
     }).then((user) => {
       models.Post.findAll({
         where: { email: user.email },
-      }).then((posts) => {
+      }).then((post) => {
         res.render('users/single', {
           user,
-          posts,
+          post,
         });
       });
     }).catch(() => {

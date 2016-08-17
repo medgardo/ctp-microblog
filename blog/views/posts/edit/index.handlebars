@@ -1,13 +1,48 @@
-{{#if post}}
-  <form method="POST" action="/posts/{{post.username}}/{{post.title}}?_method=PUT">
-    <input type="text" name="title" value={{post.title}} required>
-    <input type="text" name="body" value={{post.body}} required>
-    <input type="submit" value="Update"></li>
-  </form>
+<header class="intro-header" style="background-image: url('/img/contact-bg.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>Edit A Post</h1>
+          <hr class="small">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-  <form method="POST" action="/posts/{{post.username}}/{{post.title}}?_method=DELETE">
-    <input type="hidden" name="title" value={{post.title}} required>
-    <input type="hidden" name="body" value={{post.body}} required>
-    <input type="submit" value="Delete"></li>
-  </form>
-{{/if}}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <form name="edit-post" method="POST" action="/posts/{{post.username}}/{{post.title}}?_method=PUT">
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Title</label>
+            <input type="text" class="form-control" name="title" value={{post.title}} required data-validation-required-message="Please enter a title.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Body</label>
+            <input type="text" class="form-control" name="body" value={{post.body}} required data-validation-required-message="Please enter a body.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-default">Edit</button>
+          </div>
+        </div>
+      </form>
+      <form name="delete-post" method="POST" action="/posts/{{post.username}}/{{post.title}}?_method=DELETE>
+        <div class="row">
+          <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-default">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

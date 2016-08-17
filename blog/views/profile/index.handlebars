@@ -1,7 +1,21 @@
-{{#if user}}
-  <h1>{{user.firstName}} {{user.lastName}}</h1>
-{{/if}}
+<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>{{user.username}}</h1>
+          <hr class="small">
+          <span class="subheading">{{user.firstName}} {{user.lastName}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<form name="logout" action="/logout" method="post">
-  <input type="submit" value="Logout"></li>
-</form>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <p>Random Profile Info..</p>
+    </div>
+  </div>
+</div>

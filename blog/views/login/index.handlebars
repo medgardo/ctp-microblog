@@ -1,5 +1,41 @@
-<form name="login" action="/login" method="post">
-  <input type="email" name="email" placeholder="random@email.com" required>
-  <input type="password" name="password" placeholder="password" required>
-  <input type="submit" value="Login"></li>
-</form>
+<header class="intro-header" style="background-image: url('/img/contact-bg.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>Login</h1>
+          <hr class="small">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <form name="login" action="/login" method="post">
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Email Address</label>
+            <input type="email" class="form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="Password" name="password" required data-validation-required-message="Please enter your password.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-default">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
