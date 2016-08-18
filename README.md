@@ -36,6 +36,11 @@ Boot up your local environment
 vagrant up
 ```
 
+See the application by entering this in your address bar
+```
+192.168.33.10:3000
+```
+
 SSH into your local environment once its set up
 ```
 vagrant ssh
