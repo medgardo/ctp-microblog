@@ -1,18 +1,31 @@
-const auth = require('../middlewares/auth');
 const express = require('express');
 const models = require('../models');
+const Redirect = require('../middlewares/redirect');
+const slug = require('slug');
 
 module.exports = {
   registerRouter() {
     const router = express.Router();
 
     router.get('/', this.index);
-    router.get('/new', auth.redirectIfNotLoggedIn('/login'), this.new);
-    router.post('/', auth.redirectIfNotLoggedIn('/login'), this.create);
-    router.get('/:username/:title', this.show);
-    router.get('/:username/:title/edit', auth.redirectIfNotLoggedIn('/login'), this.edit);
-    router.put('/:username/:title', auth.redirectIfNotLoggedIn('/login'), this.update);
-    router.delete('/:username/:title', auth.redirectIfNotLoggedIn('/login'), this.delete);
+    router.get('/new', Redirect.ifNotLoggedIn('/login'), this.new);
+    router.post('/', Redirect.ifNotLoggedIn('/login'), this.create);
+    router.get('/:username/:slug', this.show);
+    router.get('/:username/:slug/edit',
+                Redirect.ifNotLoggedIn('/login'),
+                Redirect.ifNotAuthorized('/posts'),
+                this.edit
+              );
+    router.put('/:username/:slug',
+                Redirect.ifNotLoggedIn('/login'),
+                Redirect.ifNotAuthorized('/posts'),
+                this.update
+              );
+    router.delete('/:username/:slug',
+                   Redirect.ifNotLoggedIn('/login'),
+                   Redirect.ifNotAuthorized('/posts'),
+                   this.delete
+                  );
 
     return router;
   },
@@ -28,6 +41,7 @@ module.exports = {
     models.Post.create({
       email: req.user.email,
       username: req.user.username,
+      slug: slug(req.body.title.toLowerCase()),
       title: req.body.title.toLowerCase(),
       body: req.body.body,
     }).then((post) => {
@@ -40,43 +54,41 @@ module.exports = {
     models.Post.findOne({
       where: {
         username: req.params.username,
-        title: req.params.title,
+        slug: req.params.slug,
       },
     }).then((post) =>
       (post ? res.render('posts/single', { post }) : res.redirect('/posts'))
     );
   },
   edit(req, res) {
-    if (req.user.username !== req.params.username) res.redirect('/posts');
     models.Post.findOne({
       where: {
         username: req.params.username,
-        title: req.params.title,
+        slug: req.params.slug,
       },
     }).then((post) =>
       (post ? res.render('posts/edit', { post }) : res.redirect('/posts'))
     );
   },
   update(req, res) {
-    if (req.user.username !== req.params.username) res.redirect('/posts');
     models.Post.update({
-      title: req.body.title,
+      title: req.body.title.toLowerCase(),
+      slug: slug(req.body.title.toLowerCase()),
       body: req.body.body,
     }, {
       where: {
         username: req.params.username,
-        title: req.params.title,
+        slug: req.params.slug,
       },
     }).then((post) => {
       res.redirect(`/posts/${post.username}/${post.title}`);
     });
   },
   delete(req, res) {
-    if (req.user.username !== req.params.username) res.redirect('/posts');
     models.Post.destroy({
       where: {
         username: req.params.username,
-        title: req.params.title,
+        slug: req.params.slug,
       },
     }).then(() => {
       res.redirect('/posts');

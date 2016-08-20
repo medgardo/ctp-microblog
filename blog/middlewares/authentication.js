@@ -23,7 +23,7 @@ passport.use(new LocalStrategy({
         return done(null, false, { message: 'Incorrect email.' });
       }
 
-      return done(null, user);
+      return done(null, user, { message: 'Successfully Logged In!' });
     });
   })
 );

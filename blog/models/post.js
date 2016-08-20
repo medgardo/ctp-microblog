@@ -19,6 +19,14 @@ module.exports = (sequelize) => {
         isAlphanumeric: true,
       },
     },
+    slug: {
+      type: Sequelize.STRING,
+      unique: 'compositeIndex',
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
     title: {
       type: Sequelize.STRING,
       unique: 'compositeIndex',

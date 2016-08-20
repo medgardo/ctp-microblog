@@ -13,8 +13,9 @@
     - sequelize-cli
     - bcrypt
     - node-gyp
+    - slug
 
-# FIX: bcrypt & bcrypt should not be global. 
+# FIX: bcrypt, node-gyp, and slug should not be global. 
 - name: install global packages
   npm: name={{item}} state=present global=yes
   with_items:
@@ -27,3 +28,4 @@
     - sequelize-cli
     - bcrypt
     - node-gyp
+    - slug
