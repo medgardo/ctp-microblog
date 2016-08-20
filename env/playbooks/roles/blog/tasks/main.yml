@@ -1,5 +1,5 @@
 - name: install node packages
-  npm: path={{ source_root }}/ state=present
+  npm: path={{ source_root }}/{{ app_name }} state=present
 
 - name: uninstall global packages
   npm: name={{item}} state=absent global=yes

@@ -4,7 +4,7 @@
   "description": "A simple blog.",
   "scripts": {
     "start": "nodemon -L app.js",
-    "test:": "node_modules/.bin/mocha --recursive"
+    "test": "node_modules/.bin/mocha"
   },
   "author": "Donato & Edgardo",
   "license": "ISC",
