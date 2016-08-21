@@ -53,10 +53,10 @@ Coming Soon
 ### Coding Style
 
 We use AirBnB JS coding style. You can check whether or not your code
-is styled properly by checking it using eslint.
+is styled properly by checking it using eslint. You must be within your project directory (inside of blog)
 
 ```
-eslint nameOfYourFile.js
+./node_modules/.bin/eslint nameOfYourFile.js
 ```
 
 ## Deployment

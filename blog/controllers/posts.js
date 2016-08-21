@@ -1,7 +1,7 @@
 const express = require('express');
 const models = require('../models');
 const Redirect = require('../middlewares/redirect');
-const slug = require('slug');
+const getSlug = require('speakingurl');
 
 module.exports = {
   registerRouter() {
@@ -41,7 +41,7 @@ module.exports = {
     models.Post.create({
       email: req.user.email,
       username: req.user.username,
-      slug: slug(req.body.title.toLowerCase()),
+      slug: getSlug(req.body.title.toLowerCase()),
       title: req.body.title.toLowerCase(),
       body: req.body.body,
     }).then((post) => {
@@ -73,7 +73,7 @@ module.exports = {
   update(req, res) {
     models.Post.update({
       title: req.body.title.toLowerCase(),
-      slug: slug(req.body.title.toLowerCase()),
+      slug: getSlug(req.body.title.toLowerCase()),
       body: req.body.body,
     }, {
       where: {

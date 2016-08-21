@@ -5,7 +5,7 @@ const express = require('express');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
-const models = require('./models/index');
+const models = require('./models/');
 const passport = require('./middlewares/authentication');
 
 const app = express();

@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
-const bcrypt = require('bcrypt');
-const saltRounds = 5;
+const bcrypt = require('bcrypt-nodejs');
 
 module.exports = (sequelize) => {
   const User = sequelize.define('user', {
@@ -47,7 +46,7 @@ module.exports = (sequelize) => {
 
   User.beforeCreate((user) =>
     new sequelize.Promise((resolve) => {
-      bcrypt.hash(user.password, saltRounds, (err, hashedPassword) => {
+      bcrypt.hash(user.password, null, null, (err, hashedPassword) => {
         resolve(hashedPassword);
       });
     }).then((hashedPw) => {
