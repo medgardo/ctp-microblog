@@ -1,3 +1,5 @@
+https://travis-ci.com/DonatoM/CUNYTechPipeline.svg?token=PVCqhzNMfi8LeQhYz7N2&branch=master
+
 # Blog
 
 Blog created using Node, Express, and PostgreSQL
