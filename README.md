@@ -35,7 +35,7 @@ vagrant up
 
 > This step may take a few minutes. It will create a new vagrant box for the application. It will then install the necessary packages and software to run the application.
 
-4) SSH into your local environment once it's set up
+4) SSH into the vagrant box once it's set up
 ```
 vagrant ssh
 ```
