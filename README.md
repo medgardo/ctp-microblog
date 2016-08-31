@@ -10,48 +10,47 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Prerequisities
 
-Python Version 2.7.10
-
-Pip Version 7.1.2
-```
-sudo easy_install pip==7.1.2
-```
-
-Ansible Version 1.9.4
-```
-sudo pip install ansible==1.9.4
-```
-
 VirtualBox Version 5.0.10
 
-Vagrant Version 1.7.4
+Vagrant Version 1.8.0 or newer
+
+> If you setup vagrant and virtualbox during the summer orientation session then you are ready to run this application.
 
 ### Running the Blog
 
-Change into the env directory
+1) Clone this repository to your host computer.
 ```
-cd env/
+git clone https://github.com/medgardo/ctp-microblog.git
 ```
 
-Boot up your local environment 
+2) Change into the env directory of the repository
+```
+cd ctp-microblog/env/
+```
+
+3) Boot up your local environment 
 ```
 vagrant up
 ```
 
-See the application by entering this in your address bar
-```
-192.168.33.10:3000
-```
+> This step may take a few minutes. It will create a new vagrant box for the application. It will then install the necessary packages and software to run the application.
 
-SSH into your local environment once its set up
+4) SSH into your local environment once it's set up
 ```
 vagrant ssh
 ```
 
-Change into the project's directory
+5) Start the application
 ```
-cd /opt/apps/
+$ cd /opt/apps/blog/
+$ npm start
 ```
+
+6) See the application by entering this in your web browser address bar
+```
+192.168.33.10:3000
+```
+
 
 ## Running the tests
 

@@ -59,13 +59,15 @@ Vagrant.configure(2) do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
 
-  config.vm.provision :ansible do |ansible|
+  config.vm.provision :ansible_local do |ansible|
+    ansible.install_mode = :pip
+    ansible.version = "1.9.4"
     ansible.limit = "all"
     ansible.playbook = "playbooks/main.yml"
     ansible.inventory_path = "inventories/local"
     ansible.extra_vars = VARS
     # ansible.verbose = "v"
-    ansible.raw_ssh_args = ['-o ConnectTimeout=120']
+    # ansible.raw_ssh_args = ['-o ConnectTimeout=120']
   end
 
   # SSH into VM as custom user instead of default vagrant user.
