@@ -15,3 +15,4 @@
 
 - name: install node
   apt: name=nodejs state=present update_cache=yes
+  sudo: True
