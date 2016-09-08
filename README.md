@@ -52,11 +52,40 @@ $ npm start
 ```
 
 
+## HELP!!! The steps above failed.
+
+No worries! By using vagrant and virtual machines we have isolated our development environment from our host machines. That means we can remove everything and try again! 
+
+The above steps can fail for various reasons. So you will want to ensure the following.
+
+- Make sure you have a working internet connection
+    + Even with a good connection, sometimes npm servers fail to respond, requiring a retry of the install.
+- Make sure you have the latest code and that you have not modified package.json, prior to the first time you run `vagrant up`
+
+**Resetting your environment**
+
+Assuming you are in the `ctp-microblog/env` directory on your HOST (Windows/Mac/Linux) machine, do the following:
+
+```
+vagrant destroy
+```
+
+type `y` and press `ENTER`.
+
+```
+cd ../..
+rm -r ctp-microblog
+```
+
+You can now start over at [step 1 above](#running-the-blog)
+
 ## Running the tests
 
 Coming Soon
 
 ### Coding Style
+
+**THIS FEATURE IS NOT ACTIVE YET**
 
 We use AirBnB JS coding style. You can check whether or not your code
 is styled properly by checking it using eslint. You must be within your project directory (inside of blog)
