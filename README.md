@@ -61,6 +61,7 @@ The above steps can fail for various reasons. So you will want to ensure the fol
 - Make sure you have a working internet connection
     + Even with a good connection, sometimes npm servers fail to respond, requiring a retry of the install.
 - Make sure you have the latest code and that you have not modified package.json, prior to the first time you run `vagrant up`
+- If the retrying 3 times does not work, please post your error screenshot to the troubleshooting channel on Slack.
 
 **Resetting your environment**
 
