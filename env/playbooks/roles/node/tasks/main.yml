@@ -8,11 +8,10 @@
      - vim
 
 - name: download npm script
-  get_url: url=https://deb.nodesource.com/setup_6.x mode=0777 dest=/
+  command: curl -o /setup_6.x https://deb.nodesource.com/setup_6.x
 
 - name: executing npm install script
   command: bash -c 'source /setup_6.x'
 
 - name: install node
   apt: name=nodejs state=present update_cache=yes
-  sudo: True
