@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const models = require('./models/');
 const passport = require('./middlewares/authentication');
+const viewHelpers = require('./middlewares/viewHelpers')
 
 const app = express();
 app.use(methodOverride('_method'));
@@ -25,6 +26,8 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views/`);
+
+app.use(viewHelpers.register());
 
 app.use(require('./controllers/'));
 

@@ -16,7 +16,7 @@
           <span class="sr-only">Toggle navigation</span>
           Menu <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="/">Start Bootstrap</a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -24,14 +24,17 @@
           <li><a href="/">Home</a></li>
           <li><a href="/users">Users</a></li>
           <li><a href="/posts">Posts</a></li>
-          {{#if user}}
+          {{#if cur_user}}
             <li id="logout"><a href="#">Logout</a></li>
+          {{ else }}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/sign-up">Sign Up</a></li>
           {{/if}}
         </ul>
       </div>
     </div>
   </nav>
-  
+
   {{{ body }}}
 
   <footer>
@@ -76,12 +79,12 @@
   <script src="/js/contact_me.js"></script>
   <script src="/js/clean-blog.min.js"></script>
 
-  {{#if user}}
+  {{#if cur_user}}
   <script>
     ;(function() {
       $('#logout').click(function() {
         $.post("/logout", function() {
-          window.location.href = '/'; 
+          window.location.href = '/';
         });
       });
     })();

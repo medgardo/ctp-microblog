@@ -14,6 +14,11 @@
 <div class="container">
   <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {{#if cur_user}}
+        <div class="create-post">
+          <a class="btn btn-default" href="/posts/new">Create Post</a>
+        </div>
+        {{/if}}
         {{#each post}}
           <div class="post-preview">
               <a href="/posts/{{this.username}}/{{this.slug}}">
@@ -24,12 +29,12 @@
               <p class="post-meta">Posted by <a href="/users/{{this.username}}">{{this.username}}</a></p>
           </div>
           <hr>
-          <ul class="pager">
-              <li class="next">
-                  <a href="#">Older Posts &rarr;</a>
-              </li>
-          </ul>
         {{/each}}
+        <ul class="pager">
+          <li class="next">
+            <a href="#">Older Posts &rarr;</a>
+          </li>
+        </ul>
       </div>
   </div>
 </div>
