@@ -16,6 +16,8 @@ Vagrant Version 1.8.0 or newer
 
 > If you setup vagrant and virtualbox during the summer orientation session then you are ready to run this application.
 
+**WINDOWS USERS:** The Vagrant/VirtualBox setup **will not** work for you without considerable modification. We recommend you follow the [Windows installation instructions here](install-node-postgres-on-windows.md).
+
 ### Running the Blog
 
 1) Clone this repository to your host computer.
