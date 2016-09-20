@@ -47,7 +47,7 @@ At this point nodemon should start the microblog, but you will receive a SEQUELI
 The CTP-Microblog code is configured to expect a database user with a name of "node" and password "ctp2016". This is how we create that user:
 
 1. Launch the "pgAdmin III" tool
-2. Open the "Localhost(localhost:5431)" server
+2. Open the "Localhost(localhost:5432)" server
 3. Right click on the `Login Roles` and click on `New Login Role...`
     * ![new login role](images/windows/create-pg-user-1.png)
 4. Use the name `node`
